@@ -44,6 +44,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "96ebe640-dc14-41a8-8279-1483d6fedafe"
+      }
+    },
+    "owner": "parachurami"
   }
 }

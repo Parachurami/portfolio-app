@@ -5,7 +5,9 @@ import React from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 //@ts-ignore
 import profile from '@/assets/images/profile.jpg';
+import useThemeContext from '../hooks/useTheme';
 const Index = () => {
+  const {colors} = useThemeContext()
   const navigation = useNavigation();
   const router = useRouter()
 
@@ -15,23 +17,23 @@ const Index = () => {
   return (
     <View className='flex flex-1 relative'>
       <View className='flex flex-1 flex-row z-0 absolute top-0 bottom-0 left-0 right-0'>
-        <View className='flex flex-1 bg-white'/>
-        <View className='flex flex-1 bg-[#ebebeb'/>
+        <View className='flex flex-1 bg-white' style={{backgroundColor:colors.gradients.surface[0]}}/>
+        <View className='flex flex-1 bg-[#ebebeb' style={{backgroundColor:colors.gradients.surface[1]}}/>
       </View>
       <View className='flex flex-1 z-50 flex-col justify-between'>
         <View>
           <View className='w-full flex flex-row items-center justify-between px-3'>
             <TouchableOpacity onPress={toggleDrawer}>
-              <AntDesign name='align-left' size={20}/>
+              <AntDesign name='align-left' color={colors.text} size={20}/>
             </TouchableOpacity>
-            <TouchableOpacity className='bg-[#E2B082FF] p-3 rounded-2xl flex flex-row gap-2 items-center' onPress={()=>router.push("../contacts")}>
+            <TouchableOpacity style={{backgroundColor:colors.warning}} className='bg-[#E2B082FF] p-3 rounded-2xl flex flex-row gap-2 items-center' onPress={()=>router.push("../contacts")}>
               <Text className='text-xl'>Contacts</Text>
               <AntDesign name='arrow-right' size={18} color={'black'}/>
             </TouchableOpacity>
           </View>
           <View className='mt-10 pl-3 pr-3'>
-            <Text className='text-[73px] font-extrabold text-wrap whitespace-pre-wrap text-[#202020]'>KAILE <Text className='text-[#010101]'>JAMES</Text></Text>
-            <Text className='text-[24px] mt-1 text-[#202020]'>SOFTWARE DEVELOPER</Text>
+            <Text className='text-[73px] font-extrabold text-wrap whitespace-pre-wrap text-[#202020]' style={{color:colors.textMuted}}>KAILE <Text className='text-[#010101]' style={{color:colors.text}}>JAMES</Text></Text>
+            <Text className='text-[24px] mt-1 text-[#202020]' style={{color:colors.text}}>SOFTWARE DEVELOPER</Text>
           </View>
         </View>
         <View className='w-full bg-[#474747] h-[400px] rounded-tr-[70px] relative'>

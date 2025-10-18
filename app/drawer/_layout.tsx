@@ -3,9 +3,11 @@ import { Drawer } from 'expo-router/drawer'
 import React from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import CustomDrawer from '../components/CustomDrawer'
+import useThemeContext from '../hooks/useTheme'
 
 const DrawerLayout = () => {
   const top = useSafeAreaInsets().top
+  const {colors, isDarkMode} = useThemeContext()
   return (
     <Drawer
     drawerContent={CustomDrawer}
@@ -13,11 +15,12 @@ const DrawerLayout = () => {
       {
         headerShown:false, 
         sceneStyle:{
-          marginTop:top
+          paddingTop:top+30,
+          backgroundColor:colors.bg
         },
-        drawerActiveTintColor:'#412D0AFF',
+        drawerActiveTintColor:isDarkMode ?'#efefef': '#412D0AFF',
         // drawerActiveBackgroundColor:'transparent',
-        // drawerInactiveBackgroundColor:'transparent',
+        drawerInactiveTintColor:'#484747FF'
       }
     }>
         <Drawer.Screen name='index' options={{title:'Home', drawerIcon:({color, size}) => (
